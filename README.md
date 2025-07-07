@@ -2,6 +2,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Añade esto justo antes de </head> -->
+<link rel="manifest" href="manifest.json">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Diario Personal</title>
@@ -336,5 +338,15 @@
         document.getElementById('diaryContent').addEventListener('input', scheduleSave);
         document.getElementById('diaryDate').addEventListener('input', scheduleSave);
     </script>
+    <!-- Añade esto justo antes de </body> -->
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js')
+        .then(registration => console.log('ServiceWorker registrado'))
+        .catch(err => console.log('Error al registrar: ', err));
+    });
+  }
+</script>
 </body>
 </html>
